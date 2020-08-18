@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SodaMachineProj
 {
-    class Can
+    abstract class Can
     {
         //Member Variables (Has A)
         protected double cost;
