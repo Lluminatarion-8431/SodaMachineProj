@@ -1,12 +1,24 @@
-﻿using System;
+﻿using SodaMachineProj;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SodaMachine
+namespace SodaMachineProj
 {
-    class Dime
+    class Dime : Coin
     {
+        //Member Variables (Has A)
+
+
+        //Constructor (Spawner)
+        public Dime()
+        {
+            value = 0.10;
+            name = "Dime";
+        }
+
+        //Member Methods (Can Do)
     }
 }

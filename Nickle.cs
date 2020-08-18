@@ -1,12 +1,22 @@
-﻿using System;
+﻿using SodaMachineProj;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SodaMachine
+namespace SodaMachineProj
 {
-    class Nickle
+    class Nickle : Coin
     {
+        //Member Variables (Has A)
+
+        //Constructor (Spawner)
+        public Nickle()
+        {
+            value = 0.05;
+            name = "Nickle";
+        }
+        //Member Methods (Can Do)
     }
 }

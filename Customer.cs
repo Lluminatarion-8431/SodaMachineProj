@@ -8,5 +8,10 @@ namespace SodaMachine
 {
     class Customer
     {
+        //Member Variables (Has A)
+
+        //Constructor (Spawner)
+
+        //Member Methods (Can Do)
     }
 }
