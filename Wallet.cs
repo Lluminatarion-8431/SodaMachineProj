@@ -18,6 +18,7 @@ namespace SodaMachineProj
         {
             coins = new List<Coin>();
             card = new Card();
+            InWallet();
         }
 
         //Member Methods (Can Do)
