@@ -60,5 +60,34 @@ namespace SodaMachineProj
             }
         }
 
+        public bool SodaInventory(string name)
+        {
+            bool sodaInventory = true;
+            
+            for(int i = 0; i < cans.Count; i++)
+            {
+                if (cans[i].name == name)
+                {
+                    sodaInventory = true;
+                    can = cans[i];
+                    break;
+                }
+                else
+                {
+                    sodaInventory = false;
+                }
+            }
+            return sodaInventory;
+        }
+
+        public double DisplayCost()
+        {
+            moneyTotal = 0.0;
+            for (int i = 0; i < inRegister.Count; i++)
+            {
+                moneyTotal += inRegister[i].Value;
+            }
+            return moneyTotal;
+        }
     }
 }
