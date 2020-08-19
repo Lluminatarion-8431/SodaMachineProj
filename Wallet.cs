@@ -21,11 +21,23 @@ namespace SodaMachineProj
         }
 
         //Member Methods (Can Do)
-        public void FizzBuzz()
+        public void InWallet()
         {
-            for (int i = 0; i < 101; i++)
+            for (int i = 0; i < 24; i++)
             {
-
+                coins.Add(new Quarter());
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                coins.Add(new Dime());
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                coins.Add(new Nickle());
+            }
+            for (int i = 0; i < 100; i++)
+            {
+                coins.Add(new Penny());
             }
         }
     }
