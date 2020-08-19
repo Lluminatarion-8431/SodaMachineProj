@@ -9,7 +9,7 @@ namespace SodaMachineProj
     class Simulation
     {
         //Member Variables (Has A)
-
+       
         //Constructor (Spawner)
 
         //Member Methods (Can Do)

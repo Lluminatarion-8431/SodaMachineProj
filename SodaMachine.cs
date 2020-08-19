@@ -44,7 +44,7 @@ namespace SodaMachineProj
             }
         }
 
-        private void CansInventory()
+        private void CansInventory()//verbs for words
         {
             for (int i = 0; i < 20; i++)
             {
@@ -60,7 +60,7 @@ namespace SodaMachineProj
             }
         }
 
-        public bool SodaInventory(string name)
+        public bool SodaInventory(string name)// verb based 
         {
             bool sodaInventory = true;
             
@@ -80,7 +80,7 @@ namespace SodaMachineProj
             return sodaInventory;
         }
 
-        public double DisplayCost()
+        public double DisplayCost()//total money in register
         {
             moneyTotal = 0.0;
             for (int i = 0; i < inRegister.Count; i++)

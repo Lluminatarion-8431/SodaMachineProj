@@ -22,7 +22,7 @@ namespace SodaMachineProj
         }
 
         //Member Methods (Can Do)
-        public void InWallet()
+        public void InWallet()//user verbs to describe
         {
             for (int i = 0; i < 24; i++)
             {
