@@ -61,6 +61,33 @@ namespace SodaMachineProj
             int tempPennies = Int32.Parse(Console.ReadLine());
             return tempPennies;
         }
-        
+        public static void MoneyPrintOut(double money)
+        {
+            Console.WriteLine("You have inserted ${0} into the machine", money);
+        }
+        public static void InsufficientFunds()
+        {
+            Console.WriteLine("You have not inserted enough money for this purchase.");
+            Console.WriteLine("Refunding money...");
+        }
+        public static void ChangeAmount(double change)
+        {
+            Console.WriteLine("Your change amount is: ${0}", Math.Round(change, 2));
+        }
+        public static string AnotherPurchase()
+        {
+            Console.WriteLine("Make another purchase and cure your spaghetti arms? Yes or no");
+            string anotherPurchase = Console.ReadLine();
+            return anotherPurchase;
+        }
+        public static void CardBalance(Card card)
+        {
+            Console.WriteLine("Your card balance is : ${0}", Math.Round(card.Funds, 2));
+        }
+        public static void ValidSelection()
+        {
+            Console.WriteLine("Invalid selection, please make another selection");
+        }
+
     }
 }
