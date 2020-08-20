@@ -16,8 +16,22 @@ namespace SodaMachineProj
         }
        public static void NotInInventory()
         {
-            Console.WriteLine("Awww, too bad, out of muscle juice. Make another selection!.");
+            Console.WriteLine("Out of muscle juice, please, make another selection.");
 
+        }
+        public static string ChoosePayment()
+        {
+            Console.WriteLine("Please select a payment method to get swole:");
+            Console.WriteLine("1: Coins\t2: Card");
+            string paySelection = Console.ReadLine();
+            return paySelection;
+        }
+        public static string ChooseSodaMenu()
+        {
+            Console.WriteLine("Please select which 'soda' flavor you would like:");
+            Console.WriteLine("1: Hardcore Root Beer 60¢\n2: Psychotic Cola 35¢\n3: Insane Orange Soda 6¢");
+            string sodaSelection = Console.ReadLine();
+            return sodaSelection;
         }
         public static void WhatCoinsInMachine()
         {
@@ -35,5 +49,18 @@ namespace SodaMachineProj
             int tempDimes = Int32.Parse(Console.ReadLine());
             return tempDimes;
         }
+        public static int InsertNickles()
+        {
+            Console.Write("How many Nickles would you like to insert? ");
+            int tempNickles = Int32.Parse(Console.ReadLine());
+            return tempNickles;
+        }
+        public static int InsertPennies()
+        {
+            Console.WriteLine("How many Pennies would you like to insert: ");
+            int tempPennies = Int32.Parse(Console.ReadLine());
+            return tempPennies;
+        }
+        
     }
 }
