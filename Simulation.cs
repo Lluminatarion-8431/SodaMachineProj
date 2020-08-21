@@ -185,9 +185,49 @@ namespace SodaMachineProj
                 }
             }
         }
-        public bool CheckChangeAvailable()
+       public bool CheckChangeAvailable()
         {
-
+            double change = sodaMachine.moneyTotal - sodaMachine.can.Cost;
+            while (change >= 0.25)
+            {
+                if (customer.wallet.coins.Where(c => c.name == "Quarter").ToList().Count > 0)
+                {
+                    change -= 0.25;
+                    AddQuarterChangeToWallet();
+                }
+            }
+            while (change >= 0.10)
+            {
+                if (customer.wallet.coins.Where(c => c.name == "Dime").ToList().Count > 0)
+                {
+                    change -= 0.10;
+                    AddDimeChangeToWallet();
+                }
+            }
+            while (change >= 0.05)
+            {
+                if (customer.wallet.coins.Where(c => c.name == "Nickle").ToList().Count > 0)
+                {
+                    change -= 0.05;
+                    AddNickleChangeToWallet();
+                }
+            }
+            while (change >= 0.01)
+            {
+                if (customer.wallet.coins.Where(c => c.name == "Penny").ToList().Count > 0)
+                {
+                    change -= 0.01;
+                    AddPennyChangeToWallet();
+                }
+            }
+            if (change == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         
         public string SodaSelection()
@@ -213,9 +253,33 @@ namespace SodaMachineProj
             }
             return sodaName;
         }
-        public void CheckEnoughMoneyCard()
+        public void InitTempRegister()
         {
+            sodaMachine.inRegister = new List<Coin>();
+            UserInterface.WhatCoinsInMachine();
+            AddQuartersToTempRegister(UserInterface.InsertQuarters());
+            AddDimesToTempRegister(UserInterface.InsertDimes());
+            AddNicklesToTempRegister(UserInterface.InsertNickles());
+            AddPenniesToTempRegister(UserInterface.InsertPennies());
+            Console.Clear();
+        }
+        public void AddQuartersToTempRegister(int quarters)
+        {
+            
+        }
 
+        public void AddDimesToTempRegister(int dimes)
+        {
+            
+           
+        }
+        public void AddNicklesToTempRegister(int nickles)
+        {
+            
+        }
+        public void AddPenniesToTempRegister(int pennies)
+        {
+            
         }
         public void AddQuarterChangeToWallet()
         {
