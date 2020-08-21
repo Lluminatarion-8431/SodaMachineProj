@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SodaMachineProj
@@ -61,10 +62,27 @@ namespace SodaMachineProj
             }
             CheckEnoughMoneyCard();
         }
+        public void CoinSodaMachineLoop()
+        {
+            bool inSodaMachineInventory = false;
+            double moneyPrintOut;
+
+            InitTempRegister();
+            moneyPrintOut = sodaMachine.DisplayCost();
+            UserInterface.MoneyPrintOut(Math.Round(moneyPrintOut, 2));
+
+            while (!inSodaMachineInventory)
+            {
+                string sodaChoice = SodaSelection();
+                inSodaMachineInventory = sodaMachine.SodaInventory(sodaChoice);
+            }
+            CheckEnoughMoney();
+
+        }
 
         public bool MakeAnotherPurchase()
         {
-            string anotherPurchase = UserInterface.AnotherPruchase().ToLower();
+            string anotherPurchase = UserInterface.AnotherPurchase().ToLower();
             switch (anotherPurchase)
             {
                 case "yes":
@@ -72,6 +90,7 @@ namespace SodaMachineProj
                     break;
                 case "no":
                     sodaMachineChoice = false;
+                    break;
                 default:
                     sodaMachineChoice = false;
                     break;
@@ -80,20 +99,75 @@ namespace SodaMachineProj
         }
         public void CheckEnoughMoney()
         {
-            
+            bool changeCheck = CheckChangeAvailable();
+
+            if((sodaMachine.moneyTotal >= sodaMachine.can.Cost) || changeCheck)
+            {
+                customer.backpack.cans.Add(sodaMachine.can);
+                sodaMachine.cans.Remove(sodaMachine.can);
+                AddMoneyToSodaMachine();
+                GiveChange();
+            }
+            else if ((sodaMachine.moneyTotal < sodaMachine.can.Cost) || changeCheck)
+            {
+                UserInterface.InsufficientFunds();
+                ReturnMoney();
+            }
         }
-        public void SodaSelection()
+        public void CheckEnoughMoneyCard()
         {
-            
+            if (customer.wallet.card.Funds >= sodaMachine.can.Cost)
+            {
+                customer.backpack.cans.Add(sodaMachine.can);
+                sodaMachine.cans.Remove(sodaMachine.can);
+                customer.wallet.card.Funds -= sodaMachine.can.Cost;
+            }
+            else if (customer.wallet.card.Funds < sodaMachine.can.Cost)
+            {
+                UserInterface.InsufficientFunds();
+            }
+        }
+        public void ReturnMoney()
+        {
+            int tempRegisterCount = sodaMachine.inRegister.Count;
+            for (int i = 0; i < tempRegisterCount; i++)
+            {
+                customer.wallet.coins.Add(sodaMachine.inRegister[0]);
+                sodaMachine.inRegister.RemoveAt(0);
+            }
+        }
+        public void AddMoneyToSodaMachine()
+        {
+
+        }
+        public string SodaSelection()
+        {
+            string sodaName = "";
+            string sodaChoice = UserInterface.ChooseSodaMenu();
+
+            switch (sodaChoice)
+            {
+                case "1":
+                    sodaName = "Hardcore Root Beer";
+                    break;
+                case "2":
+                    sodaName = "Psychotic Cola";
+                    break;
+                case "3":
+                    sodaName = "Insane Orange Soda";
+                    break;
+                default:
+                    UserInterface.ValidSelection();
+                    SodaSelection();
+                    break;
+            }
+            return sodaName;
         }
         public void CheckEnoughMoneyCard()
         {
 
         }
-        public void AnotherPruchase()
-        {
-
-        }
+        
         public void CheckChangeAvailable()
         {
 
