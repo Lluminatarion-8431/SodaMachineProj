@@ -18,11 +18,11 @@ namespace SodaMachineProj
         {
             coins = new List<Coin>();
             card = new Card();
-            InWallet();
+            InitializeWallet();
         }
 
         //Member Methods (Can Do)
-        public void InWallet()//user verbs to describe
+        public void InitializeWallet()//user verbs to describe
         {
             for (int i = 0; i < 24; i++)
             {

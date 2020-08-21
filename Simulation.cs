@@ -59,7 +59,7 @@ namespace SodaMachineProj
             while (!inSodaMachineInventory)
             {
                 string sodaChoice = SodaSelection();
-                inSodaMachineInventory = sodaMachine.SodaInventory(sodaChoice);
+                inSodaMachineInventory = sodaMachine.SodaInsideInventory(sodaChoice);
 
             }
             CheckEnoughMoneyCard();
@@ -70,13 +70,13 @@ namespace SodaMachineProj
             double moneyPrintOut;
 
             InitTempRegister();
-            moneyPrintOut = sodaMachine.DisplayCost();
+            moneyPrintOut = sodaMachine.DisplayCostInRegister();
             UserInterface.MoneyPrintOut(Math.Round(moneyPrintOut, 2));
 
             while (!inSodaMachineInventory)
             {
                 string sodaChoice = SodaSelection();
-                inSodaMachineInventory = sodaMachine.SodaInventory(sodaChoice);
+                inSodaMachineInventory = sodaMachine.SodaInsideInventory(sodaChoice);
             }
             CheckEnoughMoney();
 

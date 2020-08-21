@@ -23,12 +23,12 @@ namespace SodaMachineProj
             register = new List<Coin>();
             cans = new List<Can>();
 
-            InRegister();
-            CansInventory();
+            InitializeRegister();
+            CansInsideInventory();
         }
 
         //Member Methods (Can Do)
-        private void InRegister()
+        private void InitializeRegister()
         {
             for (int i = 0; i < 20; i++)
             {
@@ -44,7 +44,7 @@ namespace SodaMachineProj
             }
         }
 
-        private void CansInventory()//verbs for words
+        private void CansInsideInventory()//verbs for words
         {
             for (int i = 0; i < 20; i++)
             {
@@ -60,7 +60,7 @@ namespace SodaMachineProj
             }
         }
 
-        public bool SodaInventory(string name)// verb based 
+        public bool SodaInsideInventory(string name)// verb based 
         {
             bool sodaInventory = true;
             
@@ -80,7 +80,7 @@ namespace SodaMachineProj
             return sodaInventory;
         }
 
-        public double DisplayCost()//total money in register
+        public double DisplayCostInRegister()//total money in register
         {
             moneyTotal = 0.0;
             for (int i = 0; i < inRegister.Count; i++)
