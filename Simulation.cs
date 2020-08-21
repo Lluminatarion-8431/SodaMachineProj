@@ -265,37 +265,154 @@ namespace SodaMachineProj
         }
         public void AddQuartersToTempRegister(int quarters)
         {
-            
+            int amountOfQuarters = customer.wallet.coins.Where(c => c.name == "Quarter").ToList().Count;
+
+            if (amountOfQuarters >= quarters) 
+            { 
+                for (int i = 0; i < quarters; i++)
+                {
+                    for (int j = 0; j < customer.wallet.coins.Count; j++)
+                    {
+                        if (customer.wallet.coins[j].name == "Quarter")
+                        {
+                            sodaMachine.inRegister.Add(customer.wallet.coins[j]);
+                            customer.wallet.coins.RemoveAt(j);
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                UserInterface.ValidSelection();
+                AddQuartersToTempRegister(UserInterface.InsertQuarters());
+            }
         }
 
         public void AddDimesToTempRegister(int dimes)
         {
-            
-           
+            int amountOfDimes = customer.wallet.coins.Where(c => c.name == "Dime").ToList().Count;
+
+            if (amountOfDimes >= dimes)
+            {
+                for (int i = 0; i < dimes; i++)
+                {
+                    for (int j = 0; j < customer.wallet.coins.Count; j++)
+                    {
+                        if (customer.wallet.coins[j].name == "Dime")
+                        {
+                            sodaMachine.inRegister.Add(customer.wallet.coins[j]);
+                            customer.wallet.coins.RemoveAt(j);
+                            break;
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                UserInterface.ValidSelection();
+                AddDimesToTempRegister(UserInterface.InsertDimes());
+
+            }
         }
         public void AddNicklesToTempRegister(int nickles)
         {
-            
+            int amountOfNickles = customer.wallet.coins.Where(c => c.name == "Nickle").ToList().Count;
+
+            if (amountOfNickles >= nickles)
+            {
+                for (int i = 0; i < nickles; i++)
+                {
+                    for (int j = 0; j < customer.wallet.coins.Count; j++)
+                    {
+                        if (customer.wallet.coins[j].name == "Nickle")
+                        {
+                            sodaMachine.inRegister.Add(customer.wallet.coins[j]);
+                            customer.wallet.coins.RemoveAt(j);
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                UserInterface.ValidSelection();
+                AddNicklesToTempRegister(UserInterface.InsertNickles());
+            }
         }
         public void AddPenniesToTempRegister(int pennies)
         {
-            
+            int amountOfPennies = customer.wallet.coins.Where(c => c.name == "Penny").ToList().Count;
+
+            if (amountOfPennies >= pennies)
+            {
+                for (int i = 0; i < pennies; i++)
+                {
+                    for (int j = 0; j < customer.wallet.coins.Count; j++)
+                    {
+                        if (customer.wallet.coins[j].name == "Penny")
+                        {
+                            sodaMachine.inRegister.Add(customer.wallet.coins[j]);
+                            customer.wallet.coins.RemoveAt(j);
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                UserInterface.ValidSelection();
+                AddPenniesToTempRegister(UserInterface.InsertPennies());
+            }
         }
         public void AddQuarterChangeToWallet()
         {
-            
+            for (int i = 0; i < sodaMachine.register.Count; i++)
+            {
+                if (sodaMachine.register[i].name == "Quarter")
+                {
+                    customer.wallet.coins.Add(sodaMachine.register[i]);
+                    sodaMachine.register.RemoveAt(i);
+                    break;
+                }
+            }
         }
         public void AddDimeChangeToWallet()
         {
-            
+            for (int i = 0; i < sodaMachine.register.Count; i++)
+            {
+                if (sodaMachine.register[i].name == "Dime")
+                {
+                    customer.wallet.coins.Add(sodaMachine.register[i]);
+                    sodaMachine.register.RemoveAt(i);
+                    break;
+                }
+            }
         }
         public void AddNickleChangeToWallet()
         {
-           
+           for (int i = 0; i < sodaMachine.register.Count; i++)
+            {
+                if (sodaMachine.register[i].name == "Nickle")
+                {
+                    customer.wallet.coins.Add(sodaMachine.register[i]);
+                    sodaMachine.register.RemoveAt(i);
+                    break;
+                }
+            }
         }
         public void AddPennyChangeToWallet()
         {
-           
+           for(int i = 0; i < sodaMachine.register.Count; i++)
+            {
+                if (sodaMachine.register[i].name == "Penny")
+                {
+                    customer.wallet.coins.Add(sodaMachine.register[i]);
+                    sodaMachine.register.RemoveAt(i);
+                    break;
+                }
+            }
         }
     }
 }
