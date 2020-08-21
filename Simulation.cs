@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SodaMachineProj
@@ -138,8 +140,56 @@ namespace SodaMachineProj
         }
         public void AddMoneyToSodaMachine()
         {
+            int tempRegisterCount = sodaMachine.inRegister.Count;
+            for (int i = 0; i < tempRegisterCount; i++)
+            {
+                sodaMachine.register.Add(sodaMachine.inRegister[0]);
+                sodaMachine.inRegister.RemoveAt(0);
+            }
+        }
+        public void GiveChange()
+        {
+            double change = sodaMachine.moneyTotal - sodaMachine.can.Cost;
+            UserInterface.ChangeAmount(change);
+
+            while (change >= 0.25)
+            {
+                if (customer.wallet.coins.Where(c => c.name == "Quarter").ToList().Count > 0)
+                {
+                    change -= 0.25;
+                    AddQuarterChangeToWallet();
+                }
+            }
+            while (change >= 0.10)
+            {
+                if (customer.wallet.coins.Where(c => c.name == "Dime").ToList().Count > 0)
+                {
+                    change -= 0.10;
+                    AddDimeChangeToWallet();
+                }
+            }
+            while (change >=0.05)
+            {
+                if (customer.wallet.coins.Where(c => c.name == "Nickle").ToList().Count > 0)
+                {
+                    change -= 0.05;
+                    AddNickleChangeToWallet();
+                }
+            }
+            while (change >= 0.01)
+            {
+                if (customer.wallet.coins.Where(c => c.name == "Penny").ToList().Count > 0)
+                {
+                    change -= 0.01;
+                    AddPennyChangeToWallet();
+                }
+            }
+        }
+        public bool CheckChangeAvailable()
+        {
 
         }
+        
         public string SodaSelection()
         {
             string sodaName = "";
@@ -167,10 +217,21 @@ namespace SodaMachineProj
         {
 
         }
-        
-        public void CheckChangeAvailable()
+        public void AddQuarterChangeToWallet()
         {
-
+            
+        }
+        public void AddDimeChangeToWallet()
+        {
+            
+        }
+        public void AddNickleChangeToWallet()
+        {
+           
+        }
+        public void AddPennyChangeToWallet()
+        {
+           
         }
     }
 }
